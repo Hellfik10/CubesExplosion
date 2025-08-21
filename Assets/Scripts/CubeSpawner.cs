@@ -21,7 +21,7 @@ public class CubeSpawner : MonoBehaviour
 
         for (int i = 0; i < count; i++)
         {
-            Cube cube = Instantiate(_prefab, GetRandomPoint(oldCube), Quaternion.identity);
+            Cube cube = Instantiate(_prefab, GetRandomPoint(oldCube.transform), Quaternion.identity);
             cube.Init(oldCube.SplitChance * _splitChanceModifier);
             cube.transform.localScale = oldCube.transform.localScale * _scaleModifier;
 
@@ -36,11 +36,11 @@ public class CubeSpawner : MonoBehaviour
         Destroy(cube.gameObject);
     }
 
-    private Vector3 GetRandomPoint(Cube cube)
+    private Vector3 GetRandomPoint(Transform transform)
     {
-        float xPosition = Random.Range(_minRange, _maxRange + 1) + cube.transform.position.x;
-        float yPosition = cube.transform.position.y;
-        float zPosition = Random.Range(_minRange, _maxRange + 1) + cube.transform.position.z;
+        float xPosition = Random.Range(_minRange, _maxRange + 1) + transform.position.x;
+        float yPosition = transform.position.y;
+        float zPosition = Random.Range(_minRange, _maxRange + 1) + transform.position.z;
 
         return new Vector3(xPosition, yPosition, zPosition);
     }

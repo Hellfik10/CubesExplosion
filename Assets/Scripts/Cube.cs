@@ -10,7 +10,6 @@ public class Cube : MonoBehaviour
     private Renderer _renderer;
 
     public float SplitChance => _splitChance;
-    public bool CanSplit { get; private set; } = true;
     public Rigidbody Rigidbody { get; private set; }
 
     public void Awake()
@@ -22,11 +21,10 @@ public class Cube : MonoBehaviour
     public void Init(float splitChance)
     {
         _splitChance = splitChance;
-        CanSplit = GenerateCanSplit();
         _renderer.material.color = Random.ColorHSV();
     }
 
-    private bool GenerateCanSplit()
+    public bool GenerateCanSplit()
     {
         float minChance = 0f;
         float maxChance = 100f;

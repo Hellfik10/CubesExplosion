@@ -21,7 +21,7 @@ public class CubeHandler : MonoBehaviour
     {
         List<Rigidbody> explodableObjects = new List<Rigidbody>();
 
-        if (oldCube.CanSplit)
+        if (oldCube.GenerateCanSplit())
         {
             List<Cube> newCubes = _cubeSpawner.Spawn(oldCube);
 
